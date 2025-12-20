@@ -11,6 +11,7 @@ final class CreateUserRequest extends IRequest {
     this.url,
     this.description,
     this.locale,
+    this.lang,
     this.nickName,
     this.slug,
     this.roles,
@@ -55,6 +56,9 @@ final class CreateUserRequest extends IRequest {
   /// Locale for the user.
   String? locale;
 
+  /// Language for the user.
+  String? lang;
+
   /// The nickname for the user.
   String? nickName;
 
@@ -82,6 +86,7 @@ final class CreateUserRequest extends IRequest {
       ..addIfNotNull('url', url)
       ..addIfNotNull('description', description)
       ..addIfNotNull('locale', locale)
+      ..addIfNotNull('lang', lang)
       ..addIfNotNull('nickname', nickName)
       ..addIfNotNull('slug', slug)
       ..addIfNotNull('roles', rolesList ?? roles)
