@@ -86,17 +86,20 @@ final class CreateUserRequest extends IRequest {
       ..addIfNotNull('url', url)
       ..addIfNotNull('description', description)
       ..addIfNotNull('locale', locale)
-      ..addIfNotNull('lang', lang)
       ..addIfNotNull('nickname', nickName)
       ..addIfNotNull('slug', slug)
       ..addIfNotNull('roles', rolesList ?? roles)
       ..addIfNotNull('meta', meta)
       ..addAllIfNotNull(extra);
 
+    final query = <String, dynamic>{}
+      ..addIfNotNull('lang', lang)
+      ..addAllIfNotNull(queryParameters);
+
     return WordpressRequest(
       body: body,
       headers: headers,
-      queryParameters: queryParameters,
+      queryParameters: query,
       method: HttpMethod.post,
       url: RequestUrl.relative('users'),
       requireAuth: requireAuth,
